@@ -1,0 +1,58 @@
+span{
+font-family: "Oleo Script", system-ui;
+color:  rgb(216, 0, 0);
+font-size: 40px;
+}
+
+
+.box{
+
+
+padding: 10px;
+padding-inline: 50px;
+border: none;
+border-radius: 20px;
+
+}
+
+.Entrar{
+
+margin-top: 50px;
+
+padding: 17px;
+padding-inline: 70px;
+border: none;
+color: white;
+background-color:  rgb(216, 0, 0);
+border-radius: 25px;
+
+}
+.Entrar:hover{
+background-color: rgba(231, 229, 229, 0.959);;
+border: 1px solid  rgb(216, 0, 0);
+color:  rgb(216, 0, 0);
+cursor: pointer;
+
+}
+
+p{
+    margin-top: 30px;
+font-size: 10px;
+align-items: left;
+
+}
+
+footer{
+
+background-color:  rgb(216, 0, 0);
+width: 100%;
+margin-left: -10px;
+padding-right: 17px;
+margin-bottom: -10px;
+height: 60px;
+margin-top: 15px;
+text-align: center;
+color: white;
+padding-top: 20px;
+
+}

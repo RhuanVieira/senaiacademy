@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SENAI ACADEMY</title>
+  <style>
+   
+   .logo{
+    width: 150px;
+margin-top: 10px;
+margin-left: 10px;
+cursor: pointer;
+   }
+
+  
+   
+   header{
+
+display: inline-flex;
+height: auto;
+   }
+
+ul{
+
+    display: inline-flex;
+gap: 60px;
+}
+
+li{
+list-style: none;
+cursor: pointer;
+
+
+}
+
+li:hover{
+
+color: red;
+text-decoration: underline red;
+
+
+}
+
+   body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      margin-top: 50px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      justify-items: center;
+    text-align: center;
+    }
+    .topic {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 10px;
+      padding-inline: 20px;
+      gap: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    .topic.done {
+      background-color: #d4ffd4;
+      text-decoration: line-through;
+    }
+    button {
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    textarea {
+      width: 100%;
+      height: 80px;
+      margin-top: 10px;
+    }
+
+    .barra-vermelha{
+
+background-color: rgb(216, 0, 0);
+margin-top: -10px;
+margin-left: -6px;
+
+width: 101%;
+color: white;
+    }
+
+    p{
+        margin-top: 20px;
+font-family: Arial, Helvetica, sans-serif;
+text-justify:auto;
+    }
+
+    .tecnologia{
+
+border-radius: 10px;
+margin-top: 20px;
+
+    }
+
+.nome_sala{
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+background-color: rgb(216, 0, 0);
+padding:1px;
+padding-inline: 5px;
+color: white;
+}
+
+.nome_sala:hover{
+color: white;
+text-decoration: underline white;
+
+}
+
+a{
+text-decoration: none;
+color: black;
+
+}
+
+  </style>
+</head>
+
+
+
+<body>
+    <section class="barra-vermelha">
+
+        &nbsp;
+
+    </section>
+<nav>
+    <a href="inicial.html"><header><img class="logo" src="img/SENAI_São_Paulo_logo.png" ></a>
+    
+    
+    <ul>
+
+    
+      <a href="cursos.html"><li>CURSOS VIRTUAIS</li></a> 
+      <a href="atividades.html"><li>ATIVIDADES</li></a>
+       
+        <a href="tarefas.html"><li>LISTA DE TAREFAS</li></a>
+        <a href="sala.html"><li class="nome_sala">MINHA SALA </li></a>
+
+
+    </ul>
+</nav>
+
+
+    </header>
+    <div class="container">
+      <h1>Lista de tarefas</h1>
+      <div id="topics"></div>
+      <h3>Adicionar novo tópico:</h3>
+      <input type="text" id="newTopic" placeholder="Ex: Loops em JavaScript">
+      <button onclick="addTopic()">Adicionar</button>
+    </div>
+  
+    <script>
+       let codeTopics = JSON.parse(localStorage.getItem('codeTopics')) || [];
+
+function saveTopics() {
+  localStorage.setItem('codeTopics', JSON.stringify(codeTopics));
+}
+
+function renderTopics() {
+  const container = document.getElementById('topics');
+  container.innerHTML = '';
+
+  codeTopics.forEach((topic, index) => {
+    const div = document.createElement('div');
+    div.className = 'topic' + (topic.done ? ' done' : '');
+
+    const title = document.createElement('span');
+    title.textContent = topic.name;
+
+    const button = document.createElement('button');
+    button.textContent = topic.done ? 'Desmarcar' : 'Concluir';
+    button.onclick = () => {
+      codeTopics[index].done = !codeTopics[index].done;
+      saveTopics();
+      renderTopics();
+    };
+
+    div.appendChild(title);
+    div.appendChild(button);
+    container.appendChild(div);
+  });
+}
+
+function addTopic() {
+  const input = document.getElementById('newTopic');
+  const name = input.value.trim();
+  if (name) {
+    codeTopics.push({ name, done: false });
+    input.value = '';
+    saveTopics();
+    renderTopics();
+  }
+}
+
+function resetTopics() {
+  if (confirm('Tem certeza que deseja resetar toda a lista?')) {
+    codeTopics = [];
+    saveTopics();
+    renderTopics();
+  }
+}
+
+renderTopics();
+    </script>
+</body>
+</html>

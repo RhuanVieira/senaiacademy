@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SENAI ACADEMY</title>
+  <link rel="stylesheet" href="link.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body class="um">
+
+  <section class="barra-vermelha">
+    &nbsp;
+  </section>
+
+  <header>
+    <img class="logo" src="img/SENAI_São_Paulo_logo.png" alt="logo">
+    <h3 class="sub_desc">SENAI ACADEMY</h3>
+  </header>
+
+  <section class="img_login">
+    <div class="container">
+      <h1 class="bem_vindo">ENTRAR</h1>
+      <p>CPF</p>
+      <input class="box" type="text" id="cpf" placeholder="Digite seu CPF aqui">
+
+      <p>SENHA</p>
+      <input class="box" type="password" id="senha" placeholder="Digite sua senha aqui">
+
+      <button class="Entrar" onclick="login()">Entrar</button>
+    </div>
+  </section>
+
+  <footer>
+    Copyright 2015-2018 © Todos os direitos reservados. Versão - 1.28.1.1
+  </footer>
+
+  <script>
+    function login() {
+      const cpf = document.getElementById('cpf').value.trim();
+      const senha = document.getElementById('senha').value;
+
+      if (cpf === '00000000' && senha === 'Senai@119') {
+        window.location.href = 'inicial.html';
+      } else {
+        alert('CPF ou senha incorretos. Tente novamente.');
+      }
+    }
+  </script>
+
+</body>
+</html>
